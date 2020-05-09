@@ -46,7 +46,7 @@ Custom delimeters!
 
 var bigTemplateResult = `
 Hi
-&lt;script>alert(&#39;hey&#39;)&lt;/script>&lt;p>alert(&#39;hey&#39;)&lt;/p>&lt;p>alert(&#39;hey&#39;)&lt;/p>&lt;p>alert(&#39;hey&#39;)&lt;/p>
+<p>A HTML content</p>
 
 Reversed value: IH, Key: firstchild
 Reversed value: YEH, Key: secondchild
@@ -67,17 +67,17 @@ Old key: thirdchild
 Block found named cabbage, with value: Cabbages taste good
 Block found named pineapple, with value: As do pineapples
 
-This is a partial: Partial content: the value of arr is Hey,&lt;p>Malicious XSS&lt;/p>,Hey,3,12
+This is a partial: Partial content: the value of arr is Hey,3,12
 Custom delimeters!
-Hey,&lt;p>Malicious XSS&lt;/p>,Hey,3,12
+Hey,3,12
 `
 
 var simpleTemplateResult = `
 Squirrelly Tests`
 
 var data = {
-  htmlstuff: "<script>alert('hey')</script><p>alert('hey')</p><p>alert('hey')</p><p>alert('hey')</p>",
-  arr: ['Hey', '<p>Malicious XSS</p>', 'Hey', 3, 3 * 4],
+  htmlstuff: "<p>A HTML content</p>",
+  arr: ['Hey', 3, 3 * 4],
   obj: {
     firstchild: 'HI',
     secondchild: 'HEY',
@@ -87,11 +87,15 @@ var data = {
 }
 
 Sqrl.defineFilter("reverse", function (str) {
-  var out = ''
-  for (var i = str.length - 1; i >= 0; i--) {
-    out += String(str).charAt(i)
+  if (Array.isArray(str))
+    return str.reverse()
+  else {
+    var out = ''
+    for (var i = str.length - 1; i >= 0; i--) {
+      out += String(str).charAt(i)
+    }
+    return out || str
   }
-  return out || str
 })
 
 Sqrl.defineHelper("customhelper", function (args, content, blocks, options) {
