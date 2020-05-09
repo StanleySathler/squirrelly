@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.Sqrl = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   var helpers = {
   // No helpers are included by default for the sake of size,
@@ -173,29 +173,9 @@
     }
   };
 
-  var escMap = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '"': '&quot;',
-    "'": '&#39;'
-  };
-
-  function replaceChar (s) {
-    return escMap[s]
-  }
-
-  var escapeRegEx = /[&<"']/g;
-  var escapeRegExTest = /[&<"']/;
-
   var filters = {
     e: function (str) {
-      // To deal with XSS. Based on Escape implementations of Mustache.JS and Marko, then customized.
-      var newStr = String(str);
-      if (escapeRegExTest.test(newStr)) {
-        return newStr.replace(escapeRegEx, replaceChar)
-      } else {
-        return newStr
-      }
+      return str;
     }
   };
   // Don't need a filter for unescape because that's just a flag telling Squirrelly not to escape
@@ -532,5 +512,5 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=squirrelly.dev.js.map
