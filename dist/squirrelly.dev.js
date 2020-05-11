@@ -175,7 +175,7 @@
 
   var filters = {
     e: function (str) {
-      return str;
+      return str
     }
   };
   // Don't need a filter for unescape because that's just a flag telling Squirrelly not to escape
