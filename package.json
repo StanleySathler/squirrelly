@@ -1,7 +1,7 @@
 {
-  "name": "squirrelly",
-  "version": "7.9.2",
-  "description": "Simple and powerful template engine that supports helpers, partials, filters, native code, and Express.",
+  "name": "squirrelly-fork",
+  "version": "7.9.3",
+  "description": "A fork of Squirrelly, not intended to be used in real projects.",
   "main": "./dist/squirrelly.min.js",
   "module": "./dist/es/squirrelly.min.js",
   "homepage": "https://squirrelly.js.org",
@@ -10,36 +10,27 @@
     "test": "./node_modules/.bin/standard 'src/*.js' && ./node_modules/.bin/mocha",
     "build": "./node_modules/.bin/rollup -c",
     "format": "./node_modules/.bin/standard --fix 'src/*.js'"
-  },
+   },
   "files": [
     "dist/",
     "postinstall.js",
     "cli.js"
   ],
-  "keywords": [
-    "template",
-    "engine",
-    "squirrelly",
-    "html",
-    "expressjs",
-    "sqrl",
-    "pug",
-    "handlebars",
-    "swig",
-    "filters",
-    "helpers"
+  "keywords": [],
+  "authors": [
+    "Ben Gubler <nebrelbug@gmail.com> (https://bengubler.com)",
+    "Stanley Sathler"
   ],
-  "author": "Ben Gubler <nebrelbug@gmail.com> (https://bengubler.com)",
   "license": "MIT",
   "bin": {
     "squirrelly": "cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/squirrellyjs/squirrelly.git"
+    "url": "git+https://github.com/StanleySathler/squirrelly.git"
   },
   "bugs": {
-    "url": "https://github.com/squirrellyjs/squirrelly/issues"
+    "url": "https://github.com/StanleySathler/squirrelly/issues"
   },
   "dependencies": {},
   "devDependencies": {
